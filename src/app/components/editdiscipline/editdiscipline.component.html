@@ -1,0 +1,84 @@
+<div class="container">
+  <form [formGroup]="disciplineFormGroup" *ngIf="disciplineFormGroup">
+    <div class = "form-group">
+      <label>IdDiscipline</label>
+      <input type ="number" class="form-control" formControlName="iddiscipline" readonly>
+    </div>
+    <div class = "form-group">
+      <label>Nom</label>
+      <input type ="text" class="form-control" formControlName="nom" [ngClass]="{'is-invalid': submitted &&
+disciplineFormGroup.controls.nom.errors}">
+      <div *ngIf="submitted && disciplineFormGroup.controls.nom.errors" class="invalid-feedback">
+        <div *ngIf="disciplineFormGroup.controls.nom.errors.required">
+          Nom obligatoire
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>Description</label>
+      <input type ="text" class="form-control" formControlName="description" [ngClass]="{'is-invalid': submitted &&
+disciplineFormGroup.controls.description.errors}">
+      <div *ngIf="submitted && disciplineFormGroup.controls.description.errors" class ="invalid-feedback">
+        <div *ngIf="disciplineFormGroup.controls.description.errors.required">
+          Description obligatoire
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>Niveau</label>
+      <input type ="number" class="form-control" formControlName="niveau" [ngClass]="{'is-invalid': submitted &&
+disciplineFormGroup.controls.niveau.errors}">
+      <div *ngIf="submitted && disciplineFormGroup.controls.niveau.errors" class="invalid-feedback">
+        <div *ngIf="disciplineFormGroup.controls.niveau.errors.required">
+          Niveau obligatoire
+        </div>
+        <div *ngIf="disciplineFormGroup.controls.niveau.errors.min">
+          Le niveau doit être supérieur ou égal à 1
+        </div>
+        <div *ngIf="disciplineFormGroup.controls.niveau.errors.max">
+          le niveau doit être inférieur ou égal à 10
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+      <ul class="navbar navbar-nav">
+        <li class="nav-item">
+          <button (click)="onUpdateDiscipline()" class="btn btn-success">
+            Save
+          </button>
+        </li>
+        <li class="nav-item">
+          <button (click)="onSeeProjets()" class="btn btn-success">
+            Projets
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <ng-container *ngIf="projets" >
+      <ng-container *ngIf="projets.length>0 else vide">
+        <table class="table">
+          <thead>
+          <th>IdProjet</th>
+          <th>Nom</th>
+          <th>DateDebut</th>
+          <th>DateFin</th>
+          <th>Cout</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let proj of projets">
+            <td>{{proj.idprojet}}</td>
+            <td>{{proj.nom}}</td>
+            <td>{{proj.datedebut|date: 'dd-MM-yyyy'}}</td>
+            <td>{{proj.datefin}}</td>
+            <td>{{proj.cout}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </ng-container>
+      <ng-template #vide>
+        Aucun projet pour cette discipline
+      </ng-template>
+    </ng-container>
+  </form>
+</div>
+<app-newprojet [dis]="disciplineFormGroup" (newProjet)="onAddProjet($event)"></app-newprojet>

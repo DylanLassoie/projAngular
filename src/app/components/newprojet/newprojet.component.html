@@ -1,0 +1,47 @@
+<div class="container">
+  <form [formGroup]="projetFormGroup" *ngIf="projetFormGroup">
+    <div class = "form-group">
+      <label>Nom</label>
+      <input type ="text" class="form-control" formControlName="nom" [ngClass]="{'is-invalid': submitted &&
+projetFormGroup.controls.nom.errors}">
+      <div *ngIf="submitted && projetFormGroup.controls.nom.errors" class="invalid-feedback">
+        <div *ngIf="projetFormGroup.controls.nom.errors.required">
+          Nom obligatoire
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>DateDebut</label>
+      <input type ="date" class="form-control" formControlName="datedebut" [ngClass]="{'is-invalid': submitted &&
+projetFormGroup.controls.datedebut.errors}">
+      <div *ngIf="submitted && projetFormGroup.controls.datedebut.errors" class ="invalid-feedback">
+        <div *ngIf="projetFormGroup.controls.datedebut.errors.required">
+          Date de début obligatoire
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>DateFin</label>
+      <input type ="date" class="form-control" formControlName="datefin" [ngClass]="{'is-invalid': submitted &&
+projetFormGroup.controls.datefin.errors}">
+      <div *ngIf="submitted && projetFormGroup.controls.datefin.errors" class="invalid-feedback">
+        <div *ngIf="projetFormGroup.controls.datefin.errors.required">
+          Date de fin obligatoire
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>Cout</label>
+      <input type ="number" class="form-control" formControlName="cout" [ngClass]="{'is-invalid': submitted &&
+projetFormGroup.controls.cout.errors}">
+      <div *ngIf="submitted && projetFormGroup.controls.cout.errors" class="invalid-feedback">
+        <div *ngIf="projetFormGroup.controls.cout.errors.required">
+          Cout obligatoire
+        </div>
+      </div>
+    </div>
+    <button (click)="onSaveProjet()" class="btn btn-success">
+      Save
+    </button>
+  </form>
+</div>
