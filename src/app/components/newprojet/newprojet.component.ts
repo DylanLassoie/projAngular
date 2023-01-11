@@ -11,6 +11,7 @@ import {formatDate} from '@angular/common';
 })
 
 export class NewprojetComponent implements OnInit {
+
   @Input() dis?: FormGroup;
   @Output() newProjet = new EventEmitter<Projet>();
   projetFormGroup?: FormGroup;
@@ -41,5 +42,9 @@ export class NewprojetComponent implements OnInit {
         alert(err.headers.get("error"));
       });
   }
+
+
 }
+
+
 

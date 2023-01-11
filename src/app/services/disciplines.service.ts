@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {Discipline} from '../entities/discipline.entities';
+import {Projet} from '../entities/projet.entities';
 
 @Injectable({providedIn:"root"})
 
@@ -19,6 +20,8 @@ export class DisciplinesService {
   searchDiscipline(nom: string): Observable<Discipline[]> {
     return this.http.get<Discipline[]>(this.host + '/disciplines/nom=' + nom);
   }
+
+
 
   deleteDiscipline(d: Discipline): Observable<void> {
     return this.http.delete<void>(this.host + '/disciplines/' + d.iddiscipline);

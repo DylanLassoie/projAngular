@@ -23,6 +23,13 @@ export class ProjetsComponent implements OnInit {
       });
   }
 
+  onSearchCoutProjet(value : any) {
+    this.projetsService.searchCoutProjet(value.cout).subscribe(
+      {
+        next: data => {this.projets = data}
+      });
+  }
+
   onNewProjet() {  this.router.navigateByUrl('newProjet'); }
 
   onDelete(p: Projet) {

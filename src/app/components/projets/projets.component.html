@@ -3,53 +3,61 @@
     <li>
       <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
         <input ngModel name="nom" type="text" >
-        <button class="btn btn-sm btn-outline-info m-lg-2">
-<span class = "fa fa-search">
-</span>
+        <button class="btn btn-sm btn-outline-info m-lg-2">Recherche
+        <span class = "fa fa-search"></span>
         </button>
       </form>
     </li>
     <li>
       <button (click)="onNewProjet()" class="btn btn-sm btn-outline-infoms-2">New</button>
     </li>
+    <li>
+      <form class="form-inline">
+        <input ngModel name="cout" type="number" >
+        <button (click)="onSearchCoutProjet(f)" class="btn btn-sm btn-outline-info m-lg-2">Recherche via cout
+        <span class = "fa fa-search"></span>
+        </button>
+      </form>
+    </li>
   </ul>
-</nav>
-<ng-container *ngIf="projets">
-  <ng-container *ngIf="projets.length>0 else inconnu">
-    <table class="table">
-      <thead>
-      <th>IdProjet</th>
-      <th>Nom</th>
-      <th>DateDebut</th>
-      <th>DateFin</th>
-      <th>Cout</th>
-      <th>IdDiscipline</th>
-      <th>Del</th>
-      <th>Edit</th>
-      </thead>
-      <tbody>
-      <tr *ngFor="let p of projets">
-        <td>{{p.idprojet}}</td>
-        <td>{{p.nom}}</td>
-        <td>{{p.datedebut}}</td>
-        <td>{{p.datefin}}</td>
-        <td>{{p.cout}}</td>
-        <td>{{p.discipline.iddiscipline}}</td>
-        <td>
-          <button (click)=onDelete(p) class="btn btn-danger">
-            <span class = "fa fa-trash-o"></span>
-          </button>
-        </td>
-        <td>
-          <button (click)=onEdit(p) class="btn btn-danger">
-            <span class = "fa fa-edit"></span>
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+
+  <ng-container *ngIf="projets">
+    <ng-container *ngIf="projets.length>0 else inconnu">
+      <table class="table">
+        <thead>
+        <th>IdProjet</th>
+        <th>Nom</th>
+        <th>DateDebut</th>
+        <th>DateFin</th>
+        <th>Cout</th>
+        <th>IdDiscipline</th>
+        <th>Del</th>
+        <th>Edit</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of projets">
+          <td>{{p.idprojet}}</td>
+          <td>{{p.nom}}</td>
+          <td>{{p.datedebut}}</td>
+          <td>{{p.datefin}}</td>
+          <td>{{p.cout}}</td>
+          <td>{{p.discipline.iddiscipline}}</td>
+          <td>
+            <button (click)=onDelete(p) class="btn btn-danger">
+              <span class = "fa fa-trash-o"></span>
+            </button>
+          </td>
+          <td>
+            <button (click)=onEdit(p) class="btn btn-danger">
+              <span class = "fa fa-edit"></span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #inconnu>
+      Nom inconnu
+    </ng-template>
   </ng-container>
-  <ng-template #inconnu>
-    Nom inconnu
-  </ng-template>
-</ng-container>
+</nav>

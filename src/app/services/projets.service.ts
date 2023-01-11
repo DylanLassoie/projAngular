@@ -22,6 +22,10 @@ export class ProjetsService {
     return this.http.get<Projet[]>(this.host + '/projets/nom=' + nom);
   }
 
+  searchCoutProjet(cout: number): Observable<Projet[]> {
+    return this.http.get<Projet[]>(this.host + '/projets/cout=' + cout);
+  }
+
   getProjetDiscipline(iddiscipline: number) : Observable<Projet[]>{
     return this.http.get<Projet[]>(this.host + '/projets/iddiscipline=' + iddiscipline);
   }

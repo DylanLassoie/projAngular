@@ -13,6 +13,7 @@ import { NewdisciplineComponent } from './components/newdiscipline/newdiscipline
 import { EditdisciplineComponent } from './components/editdiscipline/editdiscipline.component';
 import { NewprojetComponent } from './components/newprojet/newprojet.component';
 import { EditprojetComponent } from './components/editprojet/editprojet.component';
+import { ExamenComponent } from './components/examen/examen.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditprojetComponent } from './components/editprojet/editprojet.componen
     NewdisciplineComponent,
     EditdisciplineComponent,
     NewprojetComponent,
-    EditprojetComponent
+    EditprojetComponent,
+    ExamenComponent
   ],
   imports: [
     BrowserModule,
